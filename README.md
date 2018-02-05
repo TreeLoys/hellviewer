@@ -17,4 +17,4 @@ Where it use? In web scraper, bots, parsers web site for debug post,get requests
 I work above post and get sniffer (crazy pyqt5 api)
 
 
-###This work on python 2.7 and pyqt5 (Anaconda). Other version not test.
+###It work on python 2.7 and pyqt5 (Anaconda). Other version not test.
