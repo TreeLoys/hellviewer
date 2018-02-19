@@ -38,6 +38,8 @@ F5 - быстрое обновление
 			self.view.setHtml(html, QUrl(self.base_url))
 		else:
 			self.view.setHtml(html)
+	def showRequestsTable(self):
+		pass
 def show_debug_browser(data, base_url=None):
 	app = QApplication(sys.argv)
 	exe = DebugBrowser()

@@ -16,5 +16,6 @@ Where it use? In web scraper, bots, parsers web site for debug post,get requests
 
 I work above post and get sniffer (crazy pyqt5 api)
 
-
+Very important look on www site zone because it may get butthurt for you.
+See dir ./example/ for google.ru
 ### It work on python 2.7 and pyqt5 (Anaconda). Other version not test.
