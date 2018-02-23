@@ -22,18 +22,25 @@ class CostumQNetworkAccessManager(QNetworkAccessManager):
 	def createRequest(self, operation, request, device):
 		"""print (("Status: %s Url: %s")%(request.header(),
 									  request.url()))"""
-		#для перехвата исходящих запросов
+		#для перехвата исходящих post запросов
+		transit_data = None
 		if device:
-			print device
-		return QNetworkAccessManager.createRequest(self, operation, request, device)
+
+			transit = device.peek(1024)
+			print transit
+			return QNetworkAccessManager.createRequest(self, operation, request, device)
+		else:
+			return QNetworkAccessManager.createRequest(self, operation, request, device)
 		#пример device и работа же сним для изменения post переменных
+		# (последний пост)
 		#https://stackoverflow.com/questions/26630961/how-to-change-post-data-in-qtwebkit
 		#пример после отпавки данных ка спарсить ответ
 		#https://stackoverflow.com/questions/34405133/python-pyqt5-subclassing-qnetworkaccessmanagercreaterequest-data-duplication
 		#огромный пример для постабработки
 		#https://stackoverflow.com/questions/15988988/how-to-forge-request-using-createrequest-by-subclassing-qnetworkaccessmanager
 
-
+		#огромное внедрение протокола
+		#https://wiki.python.org/moin/PyQt/Adding%20the%20Gopher%20Protocol%20to%20QtWebKit
 class App(QWidget):
 	def __init__(self, *args, **kwargs):
 		QWidget.__init__(self, *args, **kwargs)
