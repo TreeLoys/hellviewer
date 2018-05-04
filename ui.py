@@ -15,6 +15,9 @@ class AppView(QMainWindow):
 		#браузер
 		self.view = QWebView()
 		self.view.resize(800, 600)
+		self.page = QWebPage()
+		self.page.settings().setAttribute(QWebSettings.DeveloperExtrasEnabled, True)
+		self.view.setPage(self.page)
 		self.view.setHtml("<h1>Loading...</h1>")
 		self.editor = Scintilla()
 		self.editor.resize(480, 596)

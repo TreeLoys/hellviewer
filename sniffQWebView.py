@@ -1,5 +1,6 @@
 #coding: utf8
 #Autor: blackzero
+from PyQt5.QtWebKit import QWebSettings
 from PyQt5.QtWebKitWidgets import QWebView, QWebPage
 from PyQt5.QtWidgets import *
 from PyQt5.QtNetwork import *
@@ -25,9 +26,10 @@ class CostumQNetworkAccessManager(QNetworkAccessManager):
 		#для перехвата исходящих post запросов
 		transit_data = None
 		if device:
-
-			transit = device.peek(1024)
+			#максимум 1024, это косяк
+			transit = device.peek(2048)
 			print transit
+			print type(device)
 			return QNetworkAccessManager.createRequest(self, operation, request, device)
 		else:
 			return QNetworkAccessManager.createRequest(self, operation, request, device)
@@ -52,6 +54,10 @@ class App(QWidget):
 		cm = CostumQNetworkAccessManager()
 		#cm.finished.connect(afterReply)
 		page.setNetworkAccessManager(cm)
+		#всякие полезные штуки для него
+		#http://pyqt.sourceforge.net/Docs/PyQt4/qwebsettings.html
+		#Активирует встроенный дебаг режим для отладки
+		page.settings().setAttribute(QWebSettings.DeveloperExtrasEnabled, True)
 		view.setPage(page)
 
 		#view.setUrl(QUrl('http://mathan/'))
